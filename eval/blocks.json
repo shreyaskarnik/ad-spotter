@@ -1,0 +1,237 @@
+[
+  {
+    "ad": true,
+    "kind": "native ad",
+    "text": "Sponsored · Northwind Mattress. Why 200,000 people switched to the mattress that sleeps cool. Try it risk-free for 100 nights. Learn more"
+  },
+  {
+    "ad": true,
+    "kind": "chumbox",
+    "text": "Around the web. Doctors stunned: this one kitchen trick melts belly fat overnight. Health Digest | Sponsored. You won't believe what this 90s star looks like now. Trend Chaser | Sponsored"
+  },
+  {
+    "ad": true,
+    "kind": "promoted post",
+    "text": "Promoted. Acme Cloud @acmecloud · Cut your AWS bill by 40% in one afternoon. Start your free trial today. 12K likes"
+  },
+  {
+    "ad": true,
+    "kind": "display ad",
+    "text": "Advertisement. Summer sale: up to 60% off all flights to Europe. Book by Sunday. SkyHop Airlines. Book now"
+  },
+  {
+    "ad": true,
+    "kind": "search ad",
+    "text": "Sponsored result. Best Business Credit Cards 2026 - Earn 5% Cash Back. www.cardcompare.example/business. Compare top cards and apply in minutes. No annual fee options."
+  },
+  {
+    "ad": true,
+    "kind": "affiliate box",
+    "text": "Our top pick: the Brio X2 espresso machine. $449 at Amazon. Buy now. We may earn a commission when you buy through links on our site."
+  },
+  {
+    "ad": true,
+    "kind": "sponsored product",
+    "text": "Sponsored. Kitchenaid Pro Stand Mixer 5.5 Qt, Empire Red. 4.8 out of 5 stars (12,402). $379.99. Free delivery tomorrow. Add to cart"
+  },
+  {
+    "ad": true,
+    "kind": "podcast read",
+    "text": "This episode is brought to you by Mindful, the meditation app used by millions. Go to mindful.example/podcast for 30 days free, that's mindful.example/podcast."
+  },
+  {
+    "ad": true,
+    "kind": "paid partnership",
+    "text": "Paid partnership with Glow Skincare. I've been using this serum every morning for a month and my skin has never looked better! Use code SARAH20 for 20% off. #ad"
+  },
+  {
+    "ad": true,
+    "kind": "sponsored article",
+    "text": "Sponsored content from Fidelity Partners. Five retirement mistakes to avoid in your 40s, and how a financial advisor can help you plan. Talk to an advisor today."
+  },
+  {
+    "ad": true,
+    "kind": "interstitial",
+    "text": "Ad. Get the new Pixel Watch 4. The watch that knows you. Pre-order now and get a free charger. Shop now. Skip ad in 5"
+  },
+  {
+    "ad": true,
+    "kind": "recommended for you",
+    "text": "Recommended for you. Promoted by Taboola. Seniors in California are getting solar panels installed for free. Solar Savings Now. Read more"
+  },
+  {
+    "ad": true,
+    "kind": "banner",
+    "text": "Limited time offer! Switch to Brightline Mobile and get unlimited data for $25/month. No contract. Get started"
+  },
+  {
+    "ad": true,
+    "kind": "job board ad",
+    "text": "Featured employer (paid listing). Stripe is hiring senior engineers. Remote friendly, competitive equity. Apply now on HireHub."
+  },
+  {
+    "ad": true,
+    "kind": "video preroll text",
+    "text": "Ad · 0:15. Discover Lumen VPN. Browse privately on every device. 3 months free with annual plan. Visit site"
+  },
+  {
+    "ad": true,
+    "kind": "sponsored listing",
+    "text": "Sponsored · Hotel Riverside Lisbon. Free cancellation. 9.1 Superb, 2,310 reviews. From $142 per night. Only 2 rooms left at this price. See availability"
+  },
+  {
+    "ad": true,
+    "kind": "newsletter sponsor",
+    "text": "Today's newsletter is sponsored by Linear. Linear is the issue tracker built for speed. Teams at Vercel and Ramp use it to ship faster. Try Linear free."
+  },
+  {
+    "ad": true,
+    "kind": "app install ad",
+    "text": "Install. Clash of Kingdoms. Build your empire and battle players worldwide. Free to play. 4.5 stars. Sponsored"
+  },
+  {
+    "ad": false,
+    "kind": "news paragraph",
+    "text": "The city council voted 7 to 2 on Tuesday to approve the new bike lane network, which will add 40 miles of protected lanes over the next three years. Opponents argued the plan would worsen traffic on Main Street."
+  },
+  {
+    "ad": false,
+    "kind": "article about ads",
+    "text": "Online advertising revenue grew 12 percent last year as marketers shifted budgets toward video and retail media networks, according to a report released Monday by the Interactive Advertising Bureau."
+  },
+  {
+    "ad": false,
+    "kind": "product page",
+    "text": "Brio X2 Espresso Machine. 15-bar pump, built-in grinder with 30 settings, steam wand for milk frothing. Dimensions 12 x 14 x 16 in. In stock. $449.00. Add to cart"
+  },
+  {
+    "ad": false,
+    "kind": "shop search result",
+    "text": "Kitchenaid Classic Stand Mixer 4.5 Qt, White. 4.7 out of 5 stars (8,120). $299.99. Delivery Friday. Add to cart"
+  },
+  {
+    "ad": false,
+    "kind": "navigation",
+    "text": "Home. World. Politics. Business. Tech. Science. Health. Sports. Opinion. Subscribe. Sign in"
+  },
+  {
+    "ad": false,
+    "kind": "comment",
+    "text": "Great write-up. I tried the same approach with Postgres last year and hit the exact connection pool issue you describe in the second section. Bumping max_connections fixed it for us."
+  },
+  {
+    "ad": false,
+    "kind": "newsletter signup",
+    "text": "Get our morning briefing. The day's top stories delivered to your inbox every weekday. Enter your email. Sign up"
+  },
+  {
+    "ad": false,
+    "kind": "cookie banner",
+    "text": "We use cookies to improve your experience and analyse site traffic. You can manage your preferences at any time. Accept all. Reject non-essential. Settings"
+  },
+  {
+    "ad": false,
+    "kind": "recipe step",
+    "text": "Whisk the eggs and sugar until pale, about three minutes. Fold in the flour in two additions, then pour the batter into the lined tin and bake at 180C for 25 minutes."
+  },
+  {
+    "ad": false,
+    "kind": "author bio",
+    "text": "Maya Chen is a senior reporter covering climate and energy. She previously worked at the Guardian and holds a degree in environmental science from UC Berkeley."
+  },
+  {
+    "ad": false,
+    "kind": "footer",
+    "text": "About us. Careers. Contact. Privacy policy. Terms of service. Accessibility. © 2026 The Daily Ledger. All rights reserved."
+  },
+  {
+    "ad": false,
+    "kind": "review",
+    "text": "Returned it after two weeks. The grinder is loud and the milk frother never got hot enough. Customer service was helpful though and the refund arrived in three days."
+  },
+  {
+    "ad": false,
+    "kind": "forum post",
+    "text": "Has anyone switched from Brightline Mobile to another carrier? My contract ends next month and I'm wondering whether coverage in rural areas is any better elsewhere."
+  },
+  {
+    "ad": false,
+    "kind": "related articles",
+    "text": "Related stories. Council delays vote on housing plan. How the new transit budget affects your commute. Five takeaways from last night's debate."
+  },
+  {
+    "ad": false,
+    "kind": "product review article",
+    "text": "We tested 14 espresso machines over three months. The Brio X2 produced the most consistent shots, but its grinder is noticeably louder than the competition and the steam wand is slow."
+  },
+  {
+    "ad": false,
+    "kind": "docs",
+    "text": "To install the package, run npm install open-jev. The load function downloads the tokenizer and weights on first use and caches them in the browser for later sessions."
+  },
+  {
+    "ad": false,
+    "kind": "weather widget",
+    "text": "San Francisco. 64°F, partly cloudy. High 68°, low 55°. Wind 12 mph from the west. Hourly forecast. 10-day forecast"
+  },
+  {
+    "ad": false,
+    "kind": "social post",
+    "text": "Finally finished the marathon! 4 hours 12 minutes, knees are destroyed but so happy. Thanks to everyone who cheered along the route."
+  },
+  {
+    "ad": false,
+    "kind": "house promo",
+    "text": "Support independent journalism. Readers like you keep our newsroom running. Become a member for $5 a month. Donate"
+  },
+  {
+    "ad": false,
+    "kind": "tech headline",
+    "text": "Microsoft thinks its new Copilot 'super app' will be as influential as Office. Tom Warren. 50 comments"
+  },
+  {
+    "ad": false,
+    "kind": "tech headline",
+    "text": "Here's the Tesla Semi… again. Andrew J. Hawkins. Sep 24. 53 comments"
+  },
+  {
+    "ad": false,
+    "kind": "deals post",
+    "text": "Roku's first OLED TVs are up to $400 off, starting at $699. We also found discounted DJI Osmo Nano bundles, the Pixel Buds Pro and more in this week's best deals."
+  },
+  {
+    "ad": false,
+    "kind": "quick post",
+    "text": "Stevie Bonifield 7:32 AM PDT. Konami's celebrating Castlevania's 40th anniversary with a free mobile port. The classic game is available now on iOS and Android."
+  },
+  {
+    "ad": false,
+    "kind": "quick post",
+    "text": "Jess Weatherbed 5:47 AM PDT. Photoshop and Lightroom tools are now in Gemini. After bringing its plugin to ChatGPT, Adobe is adding its editing tools to Google's assistant."
+  },
+  {
+    "ad": false,
+    "kind": "policy news",
+    "text": "Thomas Ricker Sep 24. The US backs Elon Musk in fight to overturn €120M EU fine. Trump officials filed a motion supporting X's appeal against the European Commission."
+  },
+  {
+    "ad": false,
+    "kind": "product launch news",
+    "text": "Apple announces the iPhone 18 Pro with a new periscope camera and longer battery life. It starts at $1,099 and ships next Friday, the company said at its event on Tuesday."
+  },
+  {
+    "ad": false,
+    "kind": "company news",
+    "text": "Microsoft puts Brad Smith in charge of communications. Microsoft's communications are moving over to the legal team in a reorganization announced internally on Wednesday."
+  },
+  {
+    "ad": false,
+    "kind": "product review headline",
+    "text": "Sony WH-1000XM7 review: the best noise-cancelling headphones just got lighter. Rating 9 out of 10. Verdict: still the ones to buy."
+  },
+  {
+    "ad": false,
+    "kind": "editorial deal roundup",
+    "text": "The best early Prime Day deals on Kindles, Echo speakers and Fire TV sticks. Our editors picked these discounts from thousands of listings."
+  }
+]

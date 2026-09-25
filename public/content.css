@@ -1,0 +1,21 @@
+.gliner-ad-flag {
+  outline: 3px dashed #7c5cff !important;
+  outline-offset: 2px !important;
+  background-color: rgba(124, 92, 255, 0.08) !important;
+}
+
+.gliner-ad-flag::before {
+  content: attr(data-gliner-label);
+  display: inline-block;
+  margin: 0 6px 4px 0;
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: #7c5cff;
+  color: #fff;
+  font: 600 11px/1.6 system-ui, -apple-system, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.gliner-ad-hidden {
+  display: none !important;
+}

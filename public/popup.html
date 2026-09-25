@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <title>GLiNER Ad Spotter</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <img src="icons/icon-32.png" alt="" width="20" height="20" />
+        <h1>GLiNER Ad Spotter</h1>
+      </div>
+      <label class="switch" title="Scan pages for ads">
+        <input id="enabled" type="checkbox" />
+        <span></span>
+      </label>
+    </header>
+
+    <section class="health" id="health">
+      <span class="dot" id="health-dot"></span>
+      <div class="health-text">
+        <strong id="health-title">Model not loaded</strong>
+        <span id="health-detail">Loads on the first page you open.</span>
+      </div>
+      <button id="health-action" type="button" hidden>Load</button>
+    </section>
+    <div class="progress" id="progress" hidden><div id="progress-bar"></div></div>
+
+    <section class="stats">
+      <div><span class="num" id="scanned">0</span><span class="lbl">blocks scanned</span></div>
+      <div><span class="num" id="flagged">0</span><span class="lbl">ads found</span></div>
+      <div><span class="num" id="errors">0</span><span class="lbl">errors</span></div>
+    </section>
+    <p class="error" id="last-error" hidden></p>
+
+    <section class="controls">
+      <label class="row">
+        <span>Scan this site</span>
+        <input id="site" type="checkbox" />
+      </label>
+
+      <div class="row col">
+        <div class="between">
+          <span>Threshold</span>
+          <output id="threshold-value">0.50</output>
+        </div>
+        <input id="threshold" type="range" min="0.05" max="0.95" step="0.05" />
+        <div class="between hint"><span>more ads</span><span>fewer mistakes</span></div>
+      </div>
+
+      <div class="row">
+        <span>When found</span>
+        <div class="segmented" role="radiogroup">
+          <button type="button" data-action="highlight" role="radio">Highlight</button>
+          <button type="button" data-action="remove" role="radio">Remove</button>
+        </div>
+      </div>
+
+      <label class="row">
+        <span>Weights</span>
+        <select id="dtype">
+          <option value="auto">Auto</option>
+          <option value="fp16">fp16 · 0.87 GB</option>
+          <option value="q4f16">q4f16 · 0.52 GB</option>
+          <option value="q4">q4 · 0.89 GB</option>
+        </select>
+      </label>
+    </section>
+
+    <footer>
+      GLiNER2.5-Decide runs on your GPU. Page text never leaves this browser.
+    </footer>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

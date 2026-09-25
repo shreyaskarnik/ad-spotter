@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>The Daily Ledger — City approves bike lane network</title>
+    <style>
+      body { font: 16px/1.5 Georgia, serif; margin: 0; background: #fafaf7; color: #222; }
+      header, footer { background: #222; color: #eee; padding: 12px 24px; font-family: system-ui; }
+      nav a { color: #eee; margin-right: 14px; text-decoration: none; }
+      .wrap { display: grid; grid-template-columns: 1fr 300px; gap: 32px; max-width: 1100px; margin: 24px auto; padding: 0 24px; }
+      aside > div { background: #fff; border: 1px solid #e5e5e5; padding: 14px; margin-bottom: 18px; font-family: system-ui; font-size: 14px; }
+      .label { font-size: 11px; text-transform: uppercase; color: #888; letter-spacing: .06em; }
+      .chum { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .chum div { background: #fff; border: 1px solid #eee; padding: 10px; font-family: system-ui; font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav><a href="#">Home</a><a href="#">World</a><a href="#">Politics</a><a href="#">Business</a><a href="#">Tech</a><a href="#">Science</a><a href="#">Opinion</a><a href="#">Subscribe</a></nav>
+    </header>
+    <div class="wrap">
+      <main>
+        <article id="story">
+          <h1>City approves 40-mile protected bike lane network</h1>
+          <p>The city council voted 7 to 2 on Tuesday to approve the new bike lane network, which will add 40 miles of protected lanes over the next three years. Opponents argued the plan would worsen traffic on Main Street and hurt small businesses that rely on curbside parking.</p>
+          <p>Supporters pointed to data from similar programs in other cities showing fewer injuries and more foot traffic for shops along protected corridors. Construction on the first segment is expected to begin in the spring.</p>
+        </article>
+
+        <div id="native-ad" class="promo-unit">
+          <span class="label">Sponsored</span>
+          <p><strong>Northwind Mattress</strong>: Why 200,000 people switched to the mattress that sleeps cool. Try it risk-free for 100 nights. Learn more</p>
+        </div>
+
+        <section id="comments">
+          <h3>Comments</h3>
+          <div id="c1">Great news. I bike down Main Street every day and the painted lane there is terrifying during rush hour. Protected lanes can't come soon enough.</div>
+          <div id="c2">Curious how they will handle deliveries. Our shop gets two trucks a day and there is nowhere else for them to stop on that block.</div>
+        </section>
+
+        <div id="chumbox">
+          <div class="label">Around the web</div>
+          <div class="chum">
+            <div>Doctors stunned: this one kitchen trick melts belly fat overnight. Health Digest · Sponsored</div>
+            <div>You won't believe what this 90s star looks like now. Trend Chaser · Sponsored</div>
+          </div>
+        </div>
+      </main>
+      <aside>
+        <div id="newsletter">Get our morning briefing. The day's top stories delivered to your inbox every weekday. Enter your email and sign up.</div>
+        <div id="sidebar-ad" class="ad-slot">Advertisement. Summer sale: up to 60% off all flights to Europe. Book by Sunday. SkyHop Airlines. Book now</div>
+        <div id="related">Related stories. Council delays vote on housing plan. How the new transit budget affects your commute.</div>
+      </aside>
+    </div>
+    <footer>About us · Careers · Contact · Privacy policy · Terms of service · © 2026 The Daily Ledger</footer>
+    <script>
+      // A late-loading ad, like the ones ad scripts inject after load.
+      setTimeout(() => {
+        const late = document.createElement("div");
+        late.id = "late-ad";
+        late.textContent = "Promoted. Acme Cloud: cut your AWS bill by 40% in one afternoon. Start your free trial today.";
+        document.querySelector("main").appendChild(late);
+      }, 1500);
+    </script>
+  </body>
+</html>

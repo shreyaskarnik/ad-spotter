@@ -1,0 +1,28 @@
+{
+  "name": "gliner-adblock",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome extension that finds sponsored content with GLiNER2.5-Decide running on WebGPU, entirely in the browser",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "eval": "node eval/eval.mjs",
+    "e2e": "node scripts/build.mjs && node scripts/e2e.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.0",
+    "open-jev": "link:../work/open-jev"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.0",
+    "esbuild": "^0.28.2",
+    "jsdom": "^26.1.0",
+    "playwright": "^1.63.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.1"
+  }
+}
