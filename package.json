@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@huggingface/transformers": "^4.3.0",
-    "open-jev": "link:../work/open-jev"
+    "open-jev": "link:./vendor/open-jev"
   },
   "devDependencies": {
     "@types/chrome": "^0.3.0",

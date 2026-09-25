@@ -6,16 +6,14 @@ It asks one question of each block of a page (is this a paid ad, editorial conte
 
 ## Setup
 
-Needs Node 20+, pnpm, and Chrome 116+ with WebGPU (any recent Mac, or Windows/Linux with a supported GPU). It also needs a sibling checkout of [open-jev](https://github.com/nico-martin/open-jev) with the `gliner2` family, until that is released on npm:
+Needs Node 20+, pnpm, and Chrome 116+ with WebGPU (any recent Mac, or Windows/Linux with a supported GPU).
 
 ```bash
-# next to this folder
-git clone -b gliner2-family https://github.com/shreyaskarnik/open-jev ../work/open-jev
-(cd ../work/open-jev && pnpm install && pnpm build)
-
 pnpm install
 pnpm build          # writes dist/
 ```
+
+The `gliner2-decide` model family isn't in an npm release of [open-jev](https://github.com/nico-martin/open-jev) yet ([PR](https://github.com/nico-martin/open-jev/pull/1)), so a build of that branch is vendored in `vendor/open-jev` (MIT, with its license and source commit). It will be swapped for the npm package once released.
 
 Then in Chrome:
 

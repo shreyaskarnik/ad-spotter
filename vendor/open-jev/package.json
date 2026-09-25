@@ -1,0 +1,18 @@
+{
+  "name": "open-jev",
+  "version": "0.1.2-gliner2.ec2e422",
+  "description": "Typed decisions in the browser: run the open-jev model (a Jev-shaped System One model) with Transformers.js.",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "@huggingface/transformers": ">=4.3.0"
+  }
+}
