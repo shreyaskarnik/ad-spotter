@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "GLiNER Ad Spotter",
+  "name": "Ad Spotter",
   "version": "0.1.0",
   "description": "Finds sponsored content on web pages with GLiNER2.5-Decide running on your GPU. Page text never leaves the browser.",
   "minimum_chrome_version": "116",
@@ -11,7 +11,7 @@
     "128": "icons/icon-128.png"
   },
   "action": {
-    "default_title": "GLiNER Ad Spotter",
+    "default_title": "Ad Spotter",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon-16.png",

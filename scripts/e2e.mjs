@@ -32,7 +32,7 @@ const context = await chromium.launchPersistentContext(profile, {
 const worker = context.serviceWorkers()[0] ?? (await context.waitForEvent("serviceworker"));
 const page = await context.newPage();
 page.on("console", (msg) => {
-  if (/gliner|error|warn/i.test(msg.text())) console.log(`[page] ${msg.text()}`);
+  if (/ad-spotter|error|warn/i.test(msg.text())) console.log(`[page] ${msg.text()}`);
 });
 await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60_000 });
 
@@ -54,7 +54,7 @@ for (;;) {
   if (line !== last) console.log(`model: ${line}${s.message ? ` (${s.message})` : ""}`);
   last = line;
   if (s.state === "error") break;
-  const lateScored = await page.evaluate(() => document.querySelectorAll("[data-gliner-label]").length > 0 && document.getElementById("late-ad") !== null);
+  const lateScored = await page.evaluate(() => document.querySelectorAll("[data-ad-spotter-label]").length > 0 && document.getElementById("late-ad") !== null);
   if (s.state === "ready" && (target ? s.classified > 0 : lateScored)) {
     if (target) await page.waitForTimeout(15000); // let the page's scan queue drain
     await page.waitForTimeout(4000); // let the rescan of the late ad finish
@@ -66,22 +66,22 @@ for (;;) {
 
 const flagged = await page.evaluate(() => {
   const out = {};
-  for (const el of document.querySelectorAll("[data-gliner-label]")) {
+  for (const el of document.querySelectorAll("[data-ad-spotter-label]")) {
     const owner = el.id || el.closest("[id]")?.id || el.tagName;
-    out[owner] = el.getAttribute("data-gliner-label");
+    out[owner] = el.getAttribute("data-ad-spotter-label");
   }
   return out;
 });
 const isFlagged = (id) =>
   page.evaluate((id) => {
     const el = document.getElementById(id);
-    return !!el && (el.hasAttribute("data-gliner-label") || el.querySelector("[data-gliner-label]") !== null);
+    return !!el && (el.hasAttribute("data-ad-spotter-label") || el.querySelector("[data-ad-spotter-label]") !== null);
   }, id);
 
 console.log("\nstatus:", JSON.stringify(await status()));
 if (target) {
   const rows = await page.evaluate(() =>
-    Array.from(document.querySelectorAll("[data-gliner-label]")).map((el) => `${el.getAttribute("data-gliner-label")}  ${(el.innerText || "").replace(/\s+/g, " ").slice(0, 110)}`),
+    Array.from(document.querySelectorAll("[data-ad-spotter-label]")).map((el) => `${el.getAttribute("data-ad-spotter-label")}  ${(el.innerText || "").replace(/\s+/g, " ").slice(0, 110)}`),
   );
   console.log(`flagged ${rows.length}:\n  ${rows.join("\n  ")}`);
   if (process.env.DUMP) {

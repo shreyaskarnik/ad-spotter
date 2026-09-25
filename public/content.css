@@ -1,11 +1,11 @@
-.gliner-ad-flag {
+.ad-spotter-flag {
   outline: 3px dashed #7c5cff !important;
   outline-offset: 2px !important;
   background-color: rgba(124, 92, 255, 0.08) !important;
 }
 
-.gliner-ad-flag::before {
-  content: attr(data-gliner-label);
+.ad-spotter-flag::before {
+  content: attr(data-ad-spotter-label);
   display: inline-block;
   margin: 0 6px 4px 0;
   padding: 1px 7px;
@@ -16,6 +16,6 @@
   letter-spacing: 0.02em;
 }
 
-.gliner-ad-hidden {
+.ad-spotter-hidden {
   display: none !important;
 }

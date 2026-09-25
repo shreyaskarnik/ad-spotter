@@ -1,7 +1,7 @@
 import type { AdAction } from "../shared/settings";
 
-export const FLAG_CLASS = "gliner-ad-flag";
-export const HIDE_CLASS = "gliner-ad-hidden";
+export const FLAG_CLASS = "ad-spotter-flag";
+export const HIDE_CLASS = "ad-spotter-hidden";
 
 /**
  * Explicit ad disclosure in the block's text: a standalone "Sponsored",
@@ -51,12 +51,12 @@ export function applyScore(element: Element, p: number, threshold: number, actio
   const flagged = isAd(p, threshold);
   element.classList.toggle(FLAG_CLASS, flagged && action === "highlight");
   element.classList.toggle(HIDE_CLASS, flagged && action === "remove");
-  if (flagged) element.setAttribute("data-gliner-label", labelFor(p));
-  else element.removeAttribute("data-gliner-label");
+  if (flagged) element.setAttribute("data-ad-spotter-label", labelFor(p));
+  else element.removeAttribute("data-ad-spotter-label");
   return flagged;
 }
 
 export function clearScore(element: Element): void {
   element.classList.remove(FLAG_CLASS, HIDE_CLASS);
-  element.removeAttribute("data-gliner-label");
+  element.removeAttribute("data-ad-spotter-label");
 }

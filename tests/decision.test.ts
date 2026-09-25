@@ -16,7 +16,7 @@ describe("decision", () => {
     const el = document.createElement("div");
     expect(applyScore(el, 0.9, 0.5, "highlight")).toBe(true);
     expect(el.classList.contains(FLAG_CLASS)).toBe(true);
-    expect(el.getAttribute("data-gliner-label")).toBe("Ad 90%");
+    expect(el.getAttribute("data-ad-spotter-label")).toBe("Ad 90%");
 
     applyScore(el, 0.9, 0.5, "remove");
     expect(el.classList.contains(FLAG_CLASS)).toBe(false);
@@ -24,7 +24,7 @@ describe("decision", () => {
 
     expect(applyScore(el, 0.9, 0.95, "remove")).toBe(false);
     expect(el.classList.contains(HIDE_CLASS)).toBe(false);
-    expect(el.hasAttribute("data-gliner-label")).toBe(false);
+    expect(el.hasAttribute("data-ad-spotter-label")).toBe(false);
 
     applyScore(el, 0.9, 0.5, "highlight");
     clearScore(el);

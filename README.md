@@ -1,4 +1,4 @@
-# GLiNER Ad Spotter
+# Ad Spotter
 
 A Chrome extension that finds sponsored content on web pages with [GLiNER2.5-Decide](https://huggingface.co/fastino/GLiNER2.5-Decide) running on your GPU through WebGPU. There is no server and no API key: page text is read, classified and acted on inside the browser.
 

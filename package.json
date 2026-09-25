@@ -1,5 +1,5 @@
 {
-  "name": "gliner-adblock",
+  "name": "ad-spotter",
   "version": "0.1.0",
   "private": true,
   "description": "Chrome extension that finds sponsored content with GLiNER2.5-Decide running on WebGPU, entirely in the browser",

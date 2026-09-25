@@ -42,7 +42,7 @@ function scan(): void {
 async function report(error?: string): Promise<void> {
   let flagged = 0;
   for (const { element } of scored.values()) {
-    if (element.hasAttribute("data-gliner-label")) flagged++;
+    if (element.hasAttribute("data-ad-spotter-label")) flagged++;
   }
   await send({ type: "report", scanned: scored.size, flagged, error }).catch(() => {});
 }
@@ -77,7 +77,7 @@ async function drain(): Promise<void> {
         failures++;
         await report(response.error);
         if (failures >= MAX_FAILURES) {
-          console.warn("[gliner-adblock] giving up on this page:", response.error);
+          console.warn("[ad-spotter] giving up on this page:", response.error);
           queue.length = 0;
           break;
         }
