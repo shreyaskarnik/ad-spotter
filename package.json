@@ -18,9 +18,12 @@
     "open-jev": "link:./vendor/open-jev"
   },
   "devDependencies": {
+    "@argo-video/cli": "^0.41.0",
+    "@playwright/test": "1.63.0",
     "@types/chrome": "^0.3.0",
     "esbuild": "^0.28.2",
     "jsdom": "^26.1.0",
+    "kokoro-js": "^1.2.1",
     "playwright": "^1.63.0",
     "typescript": "^7.0.2",
     "vitest": "^5.0.1"

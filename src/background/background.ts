@@ -118,7 +118,7 @@ chrome.runtime.onMessage.addListener((message: ToBackground & { target?: string 
 
 // A new page in the tab starts its counters from zero.
 chrome.tabs.onUpdated.addListener((tabId, change) => {
-  if (change.status === "loading" && change.url) setCounters(tabId, { ...EMPTY }).catch(() => {});
+  if (change.status === "loading" && change.url?.startsWith("http")) setCounters(tabId, { ...EMPTY }).catch(() => {});
 });
 chrome.tabs.onRemoved.addListener((tabId) => {
   chrome.storage.session.remove(`tab:${tabId}`).catch(() => {});

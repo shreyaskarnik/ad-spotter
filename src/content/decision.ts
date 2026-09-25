@@ -32,11 +32,15 @@ export function hasDisclosure(text: string): boolean {
  * promos.
  */
 export function adScore(p: number, marked: boolean): number {
-  // TODO(you): decide how much the page's own marking should count. See the
-  // README section "Tuning adScore". Until then the model's score is used as is.
-  void marked;
-  return p;
+  // Starting policy ("boost marked" in the README): a block the page marks as
+  // an ad counts as at least 0.6, which catches frame-only display ads the
+  // model rates near 0.45. Unmarked blocks are left to the model, so this does
+  // not yet reduce false positives on staff-written product news.
+  return marked ? Math.max(p, MARKED_FLOOR) : p;
 }
+
+/** Lowest score a page-marked block can get. */
+export const MARKED_FLOOR = 0.6;
 
 export function isAd(p: number, threshold: number): boolean {
   return p >= threshold;

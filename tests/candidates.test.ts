@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { beforeEach, describe, expect, it } from "vitest";
-import { MAX_CHARS, blockText, findCandidates, hasAdHint, normalizeText } from "../src/content/candidates";
+import { MAX_CHARS, SCANNED_ATTR, blockText, findCandidates, hasAdHint, normalizeText } from "../src/content/candidates";
 
 const para = (words: number) => Array.from({ length: words }, (_, i) => `word${i}`).join(" ");
 
@@ -132,6 +132,15 @@ describe("findCandidates", () => {
     const isVisible = (el: Element) => el.id !== "hidden";
     const ids = findCandidates(document.body, { seen, isVisible }).map((c) => c.element.id);
     expect(ids).toEqual(["ok"]);
+  });
+
+  it("does not pick pieces of, or wrappers around, blocks scanned earlier", () => {
+    document.body.innerHTML = `
+      <div id="wrap">
+        <div id="card" ${SCANNED_ATTR}><div id="thumb"></div><div id="inner">Sponsored · Northwind: why 200,000 people switched to the mattress that sleeps cool</div></div>
+      </div>
+      <article id="fresh"><p>${para(20)}</p></article>`;
+    expect(findCandidates(document.body).map((c) => c.element.id)).toEqual(["fresh"]);
   });
 
   it("stops at the limit", () => {

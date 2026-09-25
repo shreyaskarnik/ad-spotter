@@ -50,11 +50,11 @@ Two things are specific to Manifest V3: ONNX Runtime's wasm is bundled under `di
 
 ## Privacy
 
-Page text never leaves the browser. The only network traffic the extension causes is the one-time model download from `huggingface.co`. It asks for no host permissions, only `storage` and `offscreen`.
+Page text never leaves the browser. The only network traffic the extension causes is the one-time model download from `huggingface.co`. It asks for no host permissions, only `storage`, `offscreen` and `activeTab` (so the popup can read the current site's name for the per-site switch).
 
 ## Tuning adScore
 
-`adScore(p, marked)` in `src/content/decision.ts` combines the model's p(ad) with whether the page itself marks the block as an ad (a disclosure label like "Sponsored", or ad-slot markup like `div-gpt-ad`). It currently returns `p` unchanged; the choice of how much marking should count is left open because the data points both ways.
+`adScore(p, marked)` in `src/content/decision.ts` combines the model's p(ad) with whether the page itself marks the block as an ad (a disclosure label like "Sponsored", or ad-slot markup like `div-gpt-ad`). It currently uses "boost marked": a marked block scores at least 0.6. That catches frame-only display ads, which the model rates around 0.45, but leaves unmarked blocks to the model, so it doesn't reduce false positives on staff-written product news. The data points both ways:
 
 `node eval/policies.mjs [blocks.json]` scores a few policies at threshold 0.5. On the hand-written set (`eval/blocks.json`) and on 69 blocks captured from a real news front page:
 

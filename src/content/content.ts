@@ -2,7 +2,7 @@
 // service worker, and highlights or hides the ones it calls ads.
 import type { Block, ClassifyResponse, ToBackground } from "../shared/messages";
 import { isActiveOn, loadSettings, normalizeSettings, type Settings } from "../shared/settings";
-import { findCandidates } from "./candidates";
+import { SCANNED_ATTR, findCandidates } from "./candidates";
 import { adScore, applyScore, clearScore, hasDisclosure } from "./decision";
 
 const BATCH = 6;
@@ -32,6 +32,7 @@ function scan(): void {
   if (!active || !document.body) return;
   for (const { element, text, hinted } of findCandidates(document.body, { seen, isVisible })) {
     seen.add(element);
+    element.setAttribute(SCANNED_ATTR, "");
     const id = `g${nextId++}`;
     // The page marks it as an ad itself: a disclosure label or ad-slot markup.
     queue.push({ element, block: { id, text }, marked: hinted || hasDisclosure(text) });

@@ -84,7 +84,12 @@ async function update(patch: Partial<Settings>): Promise<void> {
 }
 
 async function init(): Promise<void> {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  // ?tab=<id> shows another tab's state when the popup is opened as a page
+  // (tests and demo recordings); normally it is the active tab.
+  const tabParam = Number(new URLSearchParams(location.search).get("tab"));
+  const [tab] = tabParam
+    ? [await chrome.tabs.get(tabParam)]
+    : await chrome.tabs.query({ active: true, currentWindow: true });
   tabId = tab?.id;
   try {
     hostname = tab?.url ? new URL(tab.url).hostname : "";

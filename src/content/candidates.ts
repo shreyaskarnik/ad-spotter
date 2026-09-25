@@ -19,6 +19,8 @@ export const MIN_CHARS = 30;
 /** Blocks longer than this are containers, not a single piece of content. */
 export const MAX_CHARS = 1200;
 export const MAX_CANDIDATES = 80;
+/** Set by the content script on every block it has sent to the model. */
+export const SCANNED_ATTR = "data-ad-spotter-scanned";
 
 export type Candidate = { element: Element; text: string; hinted: boolean };
 
@@ -149,8 +151,16 @@ export function findCandidates(root: Element, options: FindOptions = {}): Candid
   const pickedSet = new Set<Element>();
   const overlaps = (element: Element) =>
     Array.from(pickedSet).some((other) => other.contains(element) || element.contains(other));
+  // Blocks from earlier scans are marked with SCANNED_ATTR; a later scan must
+  // not pick a piece of one, or a wrapper around one, as a new block.
+  const touchesScanned = (element: Element) => {
+    for (let node: Element | null = element; node; node = node.parentElement) {
+      if (seen.has(node) || node.hasAttribute(SCANNED_ATTR)) return true;
+    }
+    return element.querySelector(`[${SCANNED_ATTR}]`) !== null;
+  };
   const take = (element: Element, hinted: boolean) => {
-    if (pickedSet.has(element) || seen.has(element) || overlaps(element) || !isVisible(element)) return;
+    if (pickedSet.has(element) || touchesScanned(element) || overlaps(element) || !isVisible(element)) return;
     const text = blockText(element);
     const hasFrame = element.querySelector("iframe") !== null;
     if (text.length < MIN_CHARS && !(hinted && hasFrame)) return;

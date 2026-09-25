@@ -1,0 +1,9 @@
+[
+  { "scene": "intro", "text": "This is Ad Spotter, a Chrome extension that finds ads by reading the page, not by matching a block list." },
+  { "scene": "model", "text": "It runs Fastino's GLiNER two point five Decide model on your GPU with WebGPU. The model downloads once, and page text never leaves the browser." },
+  { "scene": "scan", "text": "Each block of the page gets one question: is this a paid ad, editorial content, or page furniture? The sponsored post, the banner and the sidebar ad light up, each with a confidence score." },
+  { "scene": "late", "text": "Ads injected after the page loads are caught too, as the page changes." },
+  { "scene": "remove", "text": "Switch to remove mode, and the same scores hide the ads instead. The article, the comments and the newsletter stay put." },
+  { "scene": "popup", "text": "The popup shows the model running on WebGPU at about a hundred milliseconds per block, with counts for the current tab." },
+  { "scene": "closing", "text": "Ad Spotter is open source, on GitHub at shreyas karnik slash ad spotter." }
+]
