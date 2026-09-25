@@ -4,7 +4,12 @@ import { MAX_BLOCK_CHARS } from "../shared/limits";
 
 /** Class/id/attribute fragments that ad slots commonly carry. */
 const AD_HINT =
-  /(^|[\s_\-:])(ads?|advert(isement)?s?|sponsor(ed|ship)?|promo(ted|tion)?|adsbygoogle|gpt-ad|dfp|ad-?slot|ad-?unit|native-?ad|taboola|outbrain|banner-?ad)([\s_\-:]|$)/i;
+  /(^|[\s_\-:])(ads?|advert(isement)?s?|sponsor(ed|ship)?|promo(ted|tion)?|adsbygoogle|gpt-ad|dfp|ad-?slot|ad-?unit|native-?ad|taboola|outbrain|banner-?ad|interstitial|vignette)([\s_\-:]|$)/i;
+/** Frame titles and ids that ad servers use ("3rd party ad content", google_ads_iframe_…, aswift_…). */
+const AD_FRAME = /(google_ads_iframe|aswift|\bads?\b|advert|ad content|sponsor)/i;
+/** Frames smaller than this are trackers or widgets, not ads worth scoring. */
+const MIN_FRAME_WIDTH = 120;
+const MIN_FRAME_HEIGHT = 50;
 /** Short labels ad slots print above themselves. */
 const AD_LABEL =
   /^(sponsored|promoted|advertisement|ad|ads|paid partnership|sponsored content|around the web|recommended for you|promoted stories|from our partners|anzeige|publicité)\b/i;
@@ -78,6 +83,19 @@ function slotNote(element: Element): string | null {
   return names.length ? `[ad slot: ${names.join(" ").slice(0, 80)}]` : null;
 }
 
+/**
+ * Trackers, widgets and helper frames parked off the page (consent tools
+ * measure fonts in a frame at top: -50000px). jsdom has no layout (0x0), so
+ * only frames with a measured size are judged.
+ */
+function isNegligibleFrame(frame: Element): boolean {
+  const { width, height, right, bottom } = frame.getBoundingClientRect();
+  if (width === 0 && height === 0) return false;
+  const tiny = width < MIN_FRAME_WIDTH || height < MIN_FRAME_HEIGHT;
+  const offPage = right + window.scrollX <= 0 || bottom + window.scrollY <= 0;
+  return tiny || offPage;
+}
+
 function hostOf(src: string | null): string | null {
   if (!src) return null;
   try {
@@ -109,7 +127,9 @@ export function hasAdHint(element: Element): boolean {
  * 2. plain blocks: walking down from the root, the first element that fits
  *    MAX_CHARS and is not itself a list of blocks, so the page is covered by
  *    non-overlapping pieces and a feed is scored item by item.
- * Hinted blocks come first so they are scored before the limit is reached.
+ * Between the two, visible frames are picked through their container, since
+ * a display ad's text is inside the frame. Hinted blocks come first so they
+ * are scored before the limit is reached.
  */
 export function findCandidates(root: Element, options: FindOptions = {}): Candidate[] {
   const seen = options.seen ?? new WeakSet<Element>();
@@ -143,11 +163,32 @@ export function findCandidates(root: Element, options: FindOptions = {}): Candid
   for (const element of all) {
     if (picked.length >= limit) break;
     if (!hasAdHint(element)) continue;
+    // A slot holding a frame is described by the frame; widening it to find
+    // more text would climb out of an overlay into the whole page.
+    if (element.querySelector("iframe") && lengthOf(element) <= MAX_CHARS) {
+      take(element, true);
+      continue;
+    }
     let target: Element = element;
     for (let depth = 0; depth < 4 && lengthOf(target) < MIN_CHARS && target.parentElement && target.parentElement !== root; depth++) {
       target = target.parentElement;
     }
     if (lengthOf(target) <= MAX_CHARS) take(target, true);
+  }
+
+  // Visible frames not covered above, via their nearest block container.
+  // Display and interstitial ads often sit in wrappers with no ad-like names,
+  // and their text lives inside the frame, where the page can't read it.
+  for (const frame of Array.from(root.querySelectorAll("iframe"))) {
+    if (picked.length >= limit) break;
+    if (!isVisible(frame) || isNegligibleFrame(frame)) continue;
+    let target = frame.parentElement;
+    while (target && target !== root && !(target.matches(BLOCK_SELECTOR) && lengthOf(target) <= MAX_CHARS)) {
+      target = target.parentElement;
+    }
+    if (!target || target === root) continue;
+    const frameSaysAd = AD_FRAME.test(`${frame.getAttribute("title") ?? ""} ${frame.id} ${frame.getAttribute("name") ?? ""}`);
+    take(target, frameSaysAd || hasAdHint(target));
   }
 
   // Walk down from the root: stop at the first block that fits and is not a

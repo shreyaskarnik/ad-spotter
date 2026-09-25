@@ -96,6 +96,31 @@ describe("findCandidates", () => {
     expect(found[0]?.text).toContain("ads.example.net");
   });
 
+  it("takes an ad overlay by its frame instead of widening into the page", () => {
+    document.body.innerHTML = `
+      <article id="story"><p>${para(60)}</p></article>
+      <div id="overlay" class="interstitial-wrapper">
+        <button>CLOSE</button>
+        <div id="frame-box"><iframe id="google_ads_iframe_/8663/site/article_1" title="3rd party ad content"></iframe></div>
+      </div>`;
+    const found = findCandidates(document.body);
+    const overlay = found.find((c) => c.element.id === "overlay");
+    expect(overlay?.hinted).toBe(true);
+    expect(overlay?.text).toContain("3rd party ad content");
+  });
+
+  it("finds frames in wrappers with no ad-like names, marking only ad frames", () => {
+    document.body.innerHTML = `
+      <div id="plain-box"><div><iframe id="aswift_1" title="Advertisement"></iframe></div></div>
+      <figure id="video"><iframe title="Bill Gates on AI regulation" src="https://www.youtube.com/embed/abc"></iframe></figure>`;
+    const found = findCandidates(document.body);
+    const byId = Object.fromEntries(found.map((c) => [c.element.closest("[id]")?.id, c]));
+    expect(Object.keys(byId).sort()).toEqual(["plain-box", "video"]);
+    expect(byId["plain-box"]?.hinted).toBe(true);
+    expect(byId["video"]?.hinted).toBe(false);
+    expect(byId["video"]?.text).toContain("youtube.com");
+  });
+
   it("skips short text, oversized containers, seen and invisible elements", () => {
     document.body.innerHTML = `
       <div id="short">Hello</div>

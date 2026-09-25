@@ -56,7 +56,14 @@ for (;;) {
   if (s.state === "error") break;
   const lateScored = await page.evaluate(() => document.querySelectorAll("[data-ad-spotter-label]").length > 0 && document.getElementById("late-ad") !== null);
   if (s.state === "ready" && (target ? s.classified > 0 : lateScored)) {
-    if (target) await page.waitForTimeout(15000); // let the page's scan queue drain
+    if (target) {
+      // Scroll through so lazy-loaded ad slots fill, then let the queue drain.
+      for (let y = 0; y < 12; y++) {
+        await page.mouse.wheel(0, 700);
+        await page.waitForTimeout(1200);
+      }
+      await page.waitForTimeout(8000);
+    }
     await page.waitForTimeout(4000); // let the rescan of the late ad finish
     break;
   }
