@@ -1,5 +1,5 @@
 node_modules/
-dist/
+/dist/
 *.zip
 .e2e-profile/
 e2e-screenshot.png
