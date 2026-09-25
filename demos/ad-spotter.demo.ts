@@ -24,6 +24,7 @@ test("ad-spotter", async ({ narration }) => {
   const context: BrowserContext = await chromium.launchPersistentContext(profile, {
     headless: false,
     viewport: { width: 1440, height: 900 },
+    colorScheme: "dark",
     args: [`--disable-extensions-except=${dist}`, `--load-extension=${dist}`],
   });
   try {
@@ -121,7 +122,7 @@ test("ad-spotter", async ({ narration }) => {
     narration.mark("popup");
     await page.goto(`chrome-extension://${extensionId}/popup.html?tab=${tabId}`);
     await page.evaluate(() => {
-      document.documentElement.style.background = "var(--bg)";
+      document.documentElement.style.background = "#0e0d12";
       document.body.style.zoom = "2";
       document.body.style.margin = "40px auto";
       document.body.style.borderRadius = "16px";
@@ -135,7 +136,7 @@ test("ad-spotter", async ({ narration }) => {
       text: "github.com/shreyaskarnik/ad-spotter",
       placement: "bottom-center",
       motion: "fade-in",
-    }, narration.durationFor("closing", { leadOutMs: 900 }));
+    }, narration.durationFor("closing", { leadOutMs: 1500, minMs: 4000 }));
 
     // Stop the screencast while the page is alive, then leave settings as found.
     await narration._closeRecording();

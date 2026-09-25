@@ -26,6 +26,14 @@
       .comment { font: 15px/1.5 system-ui, sans-serif; padding: 12px 0; border-top: 1px solid var(--line); }
       .comment b { display: block; font-size: 13px; }
       footer { border-top: 1px solid var(--line); padding: 22px 48px; font: 13px system-ui, sans-serif; color: var(--muted); }
+      @media (prefers-color-scheme: dark) {
+        :root { --ink: #ecebe7; --muted: #9a9aa0; --line: #2c2c31; --paper: #141417; }
+        header.site, .card { background: #1c1c21; }
+        nav a { color: var(--ink); }
+        .kicker { color: #ff7a6e; }
+        .ad-container { background: #1a1a1e; }
+        .ad-label { color: #8a8a90; }
+      }
     </style>
   </head>
   <body>

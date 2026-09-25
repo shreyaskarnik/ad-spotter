@@ -5,5 +5,5 @@
   { "scene": "late", "text": "Ads injected after the page loads are caught too, as the page changes." },
   { "scene": "remove", "text": "Switch to remove mode, and the same scores hide the ads instead. The article, the comments and the newsletter stay put." },
   { "scene": "popup", "text": "The popup shows the model running on WebGPU at about a hundred milliseconds per block, with counts for the current tab." },
-  { "scene": "closing", "text": "Ad Spotter is open source, on GitHub at shreyas karnik slash ad spotter." }
+  { "scene": "closing", "text": "Ad Spotter is open source on GitHub." }
 ]
