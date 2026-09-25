@@ -4,6 +4,10 @@ A Chrome extension that finds sponsored content on web pages with [GLiNER2.5-Dec
 
 It asks one question of each block of a page (is this a paid ad, editorial content, or page furniture?) and highlights or removes the blocks the model calls ads.
 
+[![Ad Spotter highlighting a sponsored post, a banner and a sidebar ad, catching an ad injected after load, then removing them](docs/demo.gif)](docs/ad-spotter-demo.mp4)
+
+[Full demo with narration (1 min)](docs/ad-spotter-demo.mp4) · recorded with [Argo](https://github.com/shreyaskarnik/argo) from `demos/ad-spotter.demo.ts`
+
 ## Setup
 
 Needs Node 20+, pnpm, and Chrome 116+ with WebGPU (any recent Mac, or Windows/Linux with a supported GPU).
